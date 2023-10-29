@@ -1,9 +1,6 @@
-package ru.example;
+package ru.example.builder;
 
-import ru.example.builder.Person;
-import ru.example.builder.PersonBuilder;
-
-public class Main {
+public class PersonMain {
     public static void main(String[] args) {
         Person mom = new PersonBuilder()
                 .setName("Анна")
