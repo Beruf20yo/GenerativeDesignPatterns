@@ -14,7 +14,7 @@ public class Person {
     private String name;
     @Getter
     private String surname;
-    private OptionalInt age;
+    private int age = -1;
     @Setter
     @Getter
     private String address;
@@ -27,10 +27,10 @@ public class Person {
     public Person(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
-        this.age = OptionalInt.of(age);
+        this.age = age;
     }
-    public int getAge(){
-        return age.isPresent() ? age.getAsInt() : null;
+    public OptionalInt getAge(){
+        return OptionalInt.of(age);
     }
 
     public PersonBuilder newChildBuilder() {
@@ -39,7 +39,7 @@ public class Person {
 
     public void happyBirthday() {
         if (hasAge()) {
-            age = OptionalInt.of(age.getAsInt() + 1);
+            age++;
         } else {
             System.out.println("Возраст не задан");
         }
@@ -47,7 +47,7 @@ public class Person {
 
 
     public boolean hasAge() {
-        return age.isPresent();
+        return age>=0;
     }
 
     public boolean hasAddress() {
@@ -59,7 +59,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", age=" + age.getAsInt() +
+                ", age=" + age +
                 ", address='" + address + '\'' +
                 '}';
     }
