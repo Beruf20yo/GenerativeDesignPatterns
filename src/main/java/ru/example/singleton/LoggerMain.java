@@ -9,6 +9,7 @@ public class LoggerMain {
 
     public static void main(String[] args) {
         logger = Logger.getInstance();
+        logger.log("Запуск программы");
 
         Scanner scanner = new Scanner(System.in);
         logger.log("Созздаём объект Scanner для приёма сообщений пользователя");
@@ -64,5 +65,6 @@ public class LoggerMain {
         filtered.forEach(System.out::println);
         logger.log("Выводим элементы списка построчно");
 
+        logger.log("Завершение рабты программы");
     }
 }
