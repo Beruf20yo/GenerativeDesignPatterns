@@ -8,12 +8,15 @@ import java.util.Objects;
 import java.util.OptionalInt;
 
 @AllArgsConstructor
-@Getter
+
 public class Person {
+    @Getter
     private String name;
+    @Getter
     private String surname;
     private OptionalInt age;
     @Setter
+    @Getter
     private String address;
 
     public Person(String name, String surname) {
@@ -25,6 +28,9 @@ public class Person {
         this.name = name;
         this.surname = surname;
         this.age = OptionalInt.of(age);
+    }
+    public int getAge(){
+        return age.isPresent() ? age.getAsInt() : null;
     }
 
     public PersonBuilder newChildBuilder() {
@@ -38,6 +44,7 @@ public class Person {
             System.out.println("Возраст не задан");
         }
     }
+
 
     public boolean hasAge() {
         return age.isPresent();
