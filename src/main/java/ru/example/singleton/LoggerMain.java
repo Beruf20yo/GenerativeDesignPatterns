@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class LoggerMain {
     static Logger logger;
+
     public static void main(String[] args) {
         logger = Logger.getInstance();
 
@@ -30,7 +31,7 @@ public class LoggerMain {
         List<Integer> list = new ArrayList<>();
         logger.log("Создаём список список list");
 
-        while (listSize > 0){
+        while (listSize > 0) {
 
             int num = (int) (Math.random() * maxNumber);
             logger.log("Создаём число " + num);
