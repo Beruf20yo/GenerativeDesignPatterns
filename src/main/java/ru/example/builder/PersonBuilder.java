@@ -21,23 +21,27 @@ public class PersonBuilder implements IPersonBuilder {
     }
 
     public PersonBuilder setName(String name) {
-        return new PersonBuilder(name, surname, age, address);
+        this.name = name;
+        return this;
     }
 
     public PersonBuilder setSurname(String surname) {
-        return new PersonBuilder(name, surname, age, address);
+        this.surname = surname;
+        return this;
     }
 
     public PersonBuilder setAge(int age) {
         if (age >= 0) {
-            return new PersonBuilder(name, surname, age, address);
+            this.age = age;
+            return this;
         } else {
             throw new IllegalArgumentException();
         }
-    }
+        }
 
     public PersonBuilder setAddress(String address) {
-        return new PersonBuilder(name, surname, age, address);
+        this.address = address;
+        return this;
     }
 
     @Override
