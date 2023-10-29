@@ -4,12 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+import java.util.OptionalInt;
+
 @AllArgsConstructor
 @Getter
 public class Person {
     private String name;
     private String surname;
-    private int age = -1;
+    private OptionalInt age;
     @Setter
     private String address;
 
@@ -21,7 +24,7 @@ public class Person {
     public Person(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
-        this.age = age;
+        this.age = OptionalInt.of(age);
     }
 
     public PersonBuilder newChildBuilder() {
@@ -30,18 +33,18 @@ public class Person {
 
     public void happyBirthday() {
         if (hasAge()) {
-            age++;
+            age = OptionalInt.of(age.getAsInt() + 1);
         } else {
             System.out.println("Возраст не задан");
         }
     }
 
     public boolean hasAge() {
-        return age >= 0;
+        return age.isPresent();
     }
 
     public boolean hasAddress() {
-        return this.address.isEmpty();
+        return Objects.nonNull(address);
     }
 
     @Override
@@ -49,7 +52,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", age=" + age +
+                ", age=" + age.getAsInt() +
                 ", address='" + address + '\'' +
                 '}';
     }
