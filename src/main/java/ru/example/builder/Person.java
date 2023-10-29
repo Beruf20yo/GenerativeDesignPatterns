@@ -30,7 +30,7 @@ public class Person {
         this.age = age;
     }
     public OptionalInt getAge(){
-        return OptionalInt.of(age);
+        return hasAge() ? OptionalInt.of(age) : OptionalInt.empty();
     }
 
     public PersonBuilder newChildBuilder() {
